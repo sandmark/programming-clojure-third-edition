@@ -7,10 +7,39 @@
 ; Visit http://www.pragmaticprogrammer.com/titles/shcloj3 for more book information.
 ;---
 (ns reader.snake
-  (:import (java.awt Color Dimension) 
-	   (javax.swing JPanel JFrame Timer JOptionPane)
+  (:import (java.awt Color Dimension)
+           (javax.swing JPanel JFrame Timer JOptionPane)
            (java.awt.event ActionListener KeyListener))
   (:refer examples.import-static :refer :all))
+
 (import-static java.awt.event.KeyEvent VK_LEFT VK_RIGHT VK_UP VK_DOWN)
 
-; TODO: implement the Snake!
+(def width
+  "The width of the game board."
+  75)
+
+(def height
+  "The height of the game board."
+  50)
+
+(def point-size
+  "Used to convert a game point into screen pixels."
+  10)
+
+(def turn-millis
+  "The heartbeat of the game.
+  It controlls how many milliseconds pass before each update of the game board."
+  75)
+
+(def win-length
+  "Snake segments threshold that is needed to win the game."
+  5)
+
+(def dirs
+  "Represents four directions as a map.
+  It contains `VK_LEFT`, `VK_RIGHT`, `VK_UP`, and `VK_DOWN`, indicates
+  their actual vectors equivalents."
+  {VK_LEFT  [-1  0]
+   VK_RIGHT [ 1  0]
+   VK_UP    [ 0 -1]
+   VK_DOWN  [ 0  1]})
