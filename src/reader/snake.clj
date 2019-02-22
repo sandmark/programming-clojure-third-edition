@@ -43,3 +43,9 @@
    VK_RIGHT [ 1  0]
    VK_UP    [ 0 -1]
    VK_DOWN  [ 0  1]})
+
+(defn add-points
+  "Adds points together.
+  It can be used to calculate the new position of a moving game object."
+  [& pts]
+  (->> pts (apply map +) vec))
