@@ -101,3 +101,7 @@
   (dosync (ref-set apple (create-apple))
           (ref-set snake (create-snake)))
   nil)
+
+(defn update-direction [snake newdir]
+  (when newdir
+    (dosync (alter snake turn newdir))))
