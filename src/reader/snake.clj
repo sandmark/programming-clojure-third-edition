@@ -73,4 +73,7 @@
   `:color` is fixed default to `(Color. 15 160 70)`
   `type` represents the object type, fixed to `:snake`"
   []
-  )
+  {:body  (list [1 1])
+   :dir   [1 0]
+   :color (Color. 15 160 70)
+   :type  :snake})
