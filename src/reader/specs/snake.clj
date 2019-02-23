@@ -24,7 +24,7 @@
                    :down  (partial = (get snake/dirs VK_DOWN))))
 
 (s/def ::game-object
-  (s/keys :req [::color ::type (or ::location (and ::body ::dir))]))
+  (s/keys :req-un [::color ::type (or ::location (and ::body ::dir))]))
 
 (s/fdef snake/add-points
   :args (s/+ ::point)
