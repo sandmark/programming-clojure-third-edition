@@ -54,7 +54,7 @@
   "Takes a `point` in game space and converts it to a rectagle on the screen.
   The result value is calculated with `point-size` value."
   [[pt1 pt2]]
-  (map #(* point-size %) [pt1 pt2 1 1]))
+  (map (partial * point-size) [pt1 pt2 1 1]))
 
 (defn create-apple
   "Creates a new apple represented as a map.
@@ -66,3 +66,11 @@
    :color    (Color. 210 50 90)
    :type     :apple})
 
+(defn create-snake
+  "Creates a new snake represented as a map.
+  `:body` is a list of points where the snake occupied, defaults to ([1 1]).
+  `:dir` is an direction which way the snake heading, defaults to [1 0]. See also `dirs`.
+  `:color` is fixed default to `(Color. 15 160 70)`
+  `type` represents the object type, fixed to `:snake`"
+  []
+  )

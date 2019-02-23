@@ -37,6 +37,9 @@
 (s/fdef snake/create-apple
   :ret ::game-object)
 
+(s/fdef snake/create-snake
+  :ret ::game-object)
+
 (stest/instrument (stest/enumerate-namespace 'reader.snake))
 
 (comment
