@@ -8,8 +8,8 @@
 (import-static/import-static java.awt.event.KeyEvent VK_LEFT VK_RIGHT VK_UP VK_DOWN)
 
 (s/def ::point
-  (s/tuple (s/int-in 0 snake/width)
-           (s/int-in 0 snake/height)))
+  (s/tuple (s/int-in (- snake/width) snake/width)
+           (s/int-in (- snake/width) snake/height)))
 
 (s/def ::rectangle
   (s/coll-of int? :count 4))
