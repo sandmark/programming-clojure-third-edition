@@ -119,3 +119,11 @@
     (.setColor g color)
     (.fillRect g x y width height)))
 
+(defmulti paint (fn [g object & _] (:type object)))
+
+(defmethod paint :apple [g {:keys [location color]}]
+  (fill-point g location color))
+
+(defmethod paint :snake [g {:keys [body color]}]
+  (doseq [point body]
+    (fill-point g point color)))
