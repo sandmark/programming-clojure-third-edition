@@ -34,6 +34,9 @@
   :args (s/cat :pt ::point)
   :ret  ::rectangle)
 
+(s/fdef snake/create-apple
+  :ret ::game-object)
+
 (stest/instrument (stest/enumerate-namespace 'reader.snake))
 
 (comment

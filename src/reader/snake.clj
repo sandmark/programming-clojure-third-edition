@@ -55,3 +55,14 @@
   The result value is calculated with `point-size` value."
   [[pt1 pt2]]
   (map #(* point-size %) [pt1 pt2 1 1]))
+
+(defn create-apple
+  "Creates a new apple represented as a map.
+  `:location` is a single point where apple occupied, which is randomly generated.
+  `:color` is fixed default to `(Color. 210 50 90)`
+  `:type` represents the object type, fixed to `:apple`."
+  []
+  {:location (vector (rand-int width) (rand-int height))
+   :color    (Color. 210 50 90)
+   :type     :apple})
+
