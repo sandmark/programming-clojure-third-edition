@@ -127,3 +127,33 @@
 (defmethod paint :snake [g {:keys [body color]}]
   (doseq [point body]
     (fill-point g point color)))
+
+(defn game-panel [frame snake apple]
+  (proxy [JPanel ActionListener KeyListener] []
+    (paintComponent [g]
+      (proxy-super paintComponent g)
+      (paint g @snake)
+      (paint g @apple))
+
+    (actionPerformed [e]
+      (update-position snake apple)
+      (when (lose? @snake)
+        (reset-game snake apple)
+        (JOptionPane/showMessageDialog frame "You lose!"))
+
+      (when (win? @snake)
+        (reset-game snake apple)
+        (JOptionPane/showMessageDialog frame "You win!"))
+
+      (.repaint this))
+
+    (keyPressed [e]
+      (update-direction snake
+                        (dirs (.getKeyCode e))))
+
+    (getPreferredSize []
+      (Dimension. (* (inc width) point-size)
+                  (* (inc height) point-size)))
+
+    (keyReleased [e])
+    (keyTyped [e])))
