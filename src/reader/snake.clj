@@ -49,3 +49,9 @@
   It can be used to calculate the new position of a moving game object."
   [& pts]
   (->> pts (apply map +) vec))
+
+(defn point-to-screen-rect
+  "Takes a `point` in game space and converts it to a rectagle on the screen.
+  The result value is calculated with `point-size` value."
+  [[pt1 pt2]]
+  (map #(* point-size %) [pt1 pt2 1 1]))
