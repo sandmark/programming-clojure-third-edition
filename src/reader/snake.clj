@@ -89,3 +89,7 @@
   (contains? (set body) head))
 
 (def lose? head-overlaps-body?)
+
+(defn eats? [{[snake-head] :body}
+             {apple :location}]
+  (= snake-head apple))
