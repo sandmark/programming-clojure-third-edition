@@ -18,10 +18,10 @@
 (s/def ::type #{:apple :snake})
 (s/def ::location ::point)
 (s/def ::body (s/and list? (s/coll-of ::point)))
-(s/def ::dir (s/or :left  (get snake/dirs VK_LEFT)
-                   :right (get snake/dirs VK_RIGHT)
-                   :up    (get snake/dirs VK_UP)
-                   :down  (get snake/dirs VK_DOWN)))
+(s/def ::dir (s/or :left  (partial = (get snake/dirs VK_LEFT))    ; HACK
+                   :right (partial = (get snake/dirs VK_RIGHT))
+                   :up    (partial = (get snake/dirs VK_UP))
+                   :down  (partial = (get snake/dirs VK_DOWN))))
 
 (s/def ::game-object
   (s/keys :req [::color ::type (or ::location (and ::body ::dir))]))
