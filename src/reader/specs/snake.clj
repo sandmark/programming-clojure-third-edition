@@ -42,8 +42,10 @@
   :args (s/cat)
   :ret ::game-object)
 
-(stest/instrument (stest/enumerate-namespace 'reader.snake))
-
 (comment
+  (stest/instrument)
+  (stest/check)
   (stest/check 'reader.snake/add-points)
-  (stest/check 'reader.snake/point-to-screen-rect))
+  (stest/check 'reader.snake/point-to-screen-rect)
+  (stest/check 'reader.snake/create-apple)
+  (stest/check 'reader.snake/create-snake))
