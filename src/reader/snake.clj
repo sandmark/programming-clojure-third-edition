@@ -105,3 +105,12 @@
 (defn update-direction [snake newdir]
   (when newdir
     (dosync (alter snake turn newdir))))
+
+(defn update-position [snake apple]
+  (dosync
+   (if (eats? @snake @apple)
+     (do (ref-set apple (create-apple))
+         (alter snake move :grow))
+     (alter snake move)))
+  nil)
+
