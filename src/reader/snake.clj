@@ -93,3 +93,6 @@
 (defn eats? [{[snake-head] :body}
              {apple :location}]
   (= snake-head apple))
+
+(defn turn [snake newdir]
+  (assoc snake :dir newdir))
