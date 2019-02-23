@@ -84,3 +84,8 @@
 
 (defn win? [{body :body}]
   (>= (count body) win-length))
+
+(defn head-overlaps-body? [{[head & body] :body}]
+  (contains? (set body) head))
+
+(def lose? head-overlaps-body?)
