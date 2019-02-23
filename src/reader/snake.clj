@@ -115,7 +115,7 @@
   nil)
 
 (defn fill-point [g pt color]
-  (let [[x y width height] (point-to-screen-rect)]
+  (let [[x y width height] (point-to-screen-rect pt)]
     (.setColor g color)
     (.fillRect g x y width height)))
 
