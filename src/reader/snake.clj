@@ -114,3 +114,8 @@
      (alter snake move)))
   nil)
 
+(defn fill-point [g pt color]
+  (let [[x y width height] (point-to-screen-rect)]
+    (.setColor g color)
+    (.fillRect g x y width height)))
+
