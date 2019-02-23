@@ -81,3 +81,6 @@
 (defn move [{:keys [body dir] :as snake} & grow]
   (assoc snake :body (cons (add-points (first body) dir)
                            (if grow body (butlast body)))))
+
+(defn win? [{body :body}]
+  (>= (count body) win-length))
