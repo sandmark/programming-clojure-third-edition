@@ -25,3 +25,14 @@
  '(chain-incorrect arm getHand getFinger))
 (macroexpand    ; completely broken
  '(chain-incorrect arm getHand getFinger))
+
+(defmacro chain-splice
+  ([x form] `(. ~x ~form))
+  ([x form & more] `(chain-splice (. ~x ~form) ~@more)))
+
+(macroexpand-1
+ '(chain-splice arm getHand))
+(macroexpand-1
+ '(chain-splice arm getHand getFinger))
+(macroexpand
+ '(chain-splice arm getHand getFinger))
