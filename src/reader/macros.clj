@@ -13,3 +13,15 @@
 (macroexpand-1 '(chain arm getHand))
 (macroexpand-1 '(chain arm getHand getFinger))
 (macroexpand '(chain arm getHand getFinger))
+
+(defmacro chain-incorrect
+  ([x form] `(. ~x ~form))
+  ([x form & more]
+   `(chain-incorrect (. ~x ~form) ~more)))
+
+(macroexpand-1  ; works fine with one argument
+ '(chain-incorrect arm getHand))
+(macroexpand-1  ; something goes wrong
+ '(chain-incorrect arm getHand getFinger))
+(macroexpand    ; completely broken
+ '(chain-incorrect arm getHand getFinger))
