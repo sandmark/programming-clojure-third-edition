@@ -36,3 +36,22 @@
  '(chain-splice arm getHand getFinger))
 (macroexpand
  '(chain-splice arm getHand getFinger))
+
+;;; The `bench` macro
+;; returns a map that includes both the return value of
+;; the original expression and the elapsed time.
+
+;; (bench (str "a" "b"))
+;; should expand to
+
+(let [start  (System/nanoTime)
+      result (str "a" "b")]
+  {:result result :elapsed (- (System/nanoTime) start)})
+
+(defmacro bench-wont-work [expr]
+  `(let [start  (System/nanoTime)
+         result ~expr]
+     {:result result :elapsed (- (System/nanoTime) start)}))
+
+(comment
+  (bench-wont-work (str "a" "b")))
